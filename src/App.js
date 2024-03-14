@@ -1,49 +1,39 @@
-import React from "react";
-import { Router, Routes, Route, Link, Routes } from 'react-router-dom'
-import { Layout, Typography, Space } from "antd"
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from 'react-router-dom';
+import Navbar from "./components/Navbar";
+import CryptoDetails from "./components/CryptoDetails";
+import Cryptocurrencies from "./components/Cryptocurrencies";
+import Exchange from "./components/Exchange";
+import News from "./components/News";
+import Homepage from "./components/Homepage";
 
-import { Navbar, Cryptocurrencies, CryptoDetails, Exchange, New, Homepage, News } from './components'
-import './App.css'
+import './App.css';
 
 function App() {
+   
+
   return (
     <div className="app">
-        <div className="navbar">
-            <Navbar/>
+      <div className="header">
+        <Navbar />
+      </div>
+      <div className="main">
+        <div className="routes">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/exchange" element={<Exchange />} />
+            <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
+            <Route path="/cryptodetails" element={<CryptoDetails />} />
+            <Route path="/news" element={<News />} />
+          </Routes>
         </div>
-        <div className="main">
-            <Layout>
-                <div className="routes">
-                    <Router>
-                      <Routes>
-                        <Route path="/">
-                          <Homepage/>
-                        </Route>
-                        
-                        <Route path="/exchange">
-                          <Exchange/>
-                        </Route>
-
-                        <Route path="/cryptocurrencies">
-                          <Cryptocurrencies/>
-                        </Route>
-
-                        <Route path="/crypto/:coinId">
-                          <CryptoDetails/>
-                        </Route>
-
-                        <Route path="/news">
-                          <News/>
-                        </Route>
-
-                        </Routes>
-                    </Router>
-                </div>
-            </Layout>
+        <div className="footer" style={{position:'fixed', bottom: '0',}}>
+          <p style={{ color: 'black', textAlign: 'center' }} >
+            CryptoPhile <br />
+            All Rights Reserved
+          </p>
         </div>
-        <div className="footer"> 
-
-        </div>
+      </div>
     </div>
   );
 }
